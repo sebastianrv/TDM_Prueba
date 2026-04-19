@@ -8,6 +8,8 @@ Prueba de Test Data Management para generación, inyección de errores y validac
 
 ```
 tdm-data-sintetica/
+├── arquitectura/
+│   └── arquitectura_solución.png
 ├── configuracion/
 │   └── global.yaml          # Parámetros globales
 ├── core/
@@ -26,7 +28,11 @@ tdm-data-sintetica/
 ├── main.py                  # Orquestador principal
 └── requerimientos.txt       # Dependencias
 ```
+## Arquitectura de solución
 
+El diagrama de la arquitectura de solución aplicado al presente ejercicio.
+
+![Arquitectura de solución](arquitectura/Arquitectura_solución.png)
 ---
 
 ## Reglas validadas

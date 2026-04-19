@@ -1,0 +1,63 @@
+{
+  "total_registros": 100,
+  "reglas_evaluadas": 4,
+  "errores_totales": 7,
+  "errores_por_regla": {
+    "regla_1_edad": 1,
+    "regla_2_inactividad": 2,
+    "regla_3_email": 0,
+    "regla_4_duplicado": 1,
+    "regla_5_nulos": 1
+  },
+  "porcentaje_cumplimiento": 98.6,
+  "muestras_errores": {
+    "domain": [
+      {
+        "id": "Cus049",
+        "campo": "estado_cliente",
+        "valor_erroneo": "9",
+        "detalle": "Campo 'estado_cliente' fuera del dominio permitido",
+        "regla": "regla_2_inactividad"
+      },
+      {
+        "id": "Cus054",
+        "campo": "estado_cliente",
+        "valor_erroneo": "9",
+        "detalle": "Campo 'estado_cliente' fuera del dominio permitido",
+        "regla": "regla_2_inactividad"
+      }
+    ],
+    "dup": [
+      {
+        "id": "Cus042",
+        "campo": "customer_id",
+        "valor_erroneo": "Cus042",
+        "detalle": "customer_id 'Cus042' duplicado",
+        "regla": "regla_4_duplicado"
+      }
+    ],
+    "business": [
+      {
+        "id": "Cus027",
+        "campo": "telefono",
+        "valor_erroneo": null,
+        "detalle": "Campos nulos o vacíos: ['telefono']",
+        "regla": "regla_5_nulos"
+      },
+      {
+        "id": "Cus049",
+        "campo": "estado_cliente",
+        "valor_erroneo": "9",
+        "detalle": "estado_cliente '9' fuera del dominio permitido",
+        "regla": "regla_2_inactividad"
+      },
+      {
+        "id": "Cus050",
+        "campo": "fecha_nacimiento",
+        "valor_erroneo": "19-04-2026",
+        "detalle": "Edad 0 es menor a 18",
+        "regla": "regla_1_edad"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "total_registros": 100,
+  "reglas_evaluadas": 3,
+  "errores_totales": 6,
+  "errores_por_regla": {
+    "regla_1_edad": 1,
+    "regla_2_inactividad": 1,
+    "regla_3_email": 0,
+    "regla_4_duplicado": 1,
+    "regla_5_nulos": 0
+  },
+  "porcentaje_cumplimiento": 98.8,
+  "muestras_errores": {
+    "schema": [
+      {
+        "id": "Cus015",
+        "campo": "cedula",
+        "valor_erroneo": "9974401224",
+        "detalle": "Campo 'cedula' con formato inválido",
+        "regla": "N/A"
+      },
+      {
+        "id": "Cus097",
+        "campo": "telefono",
+        "valor_erroneo": "0625414355",
+        "detalle": "Campo 'telefono' con formato inválido",
+        "regla": "N/A"
+      }
+    ],
+    "domain": [
+      {
+        "id": "Cus037",
+        "campo": "estado_cliente",
+        "valor_erroneo": "Eliminado",
+        "detalle": "Campo 'estado_cliente' fuera del dominio permitido",
+        "regla": "regla_2_inactividad"
+      }
+    ],
+    "dup": [
+      {
+        "id": "Cus023",
+        "campo": "customer_id",
+        "valor_erroneo": "Cus023",
+        "detalle": "customer_id 'Cus023' duplicado",
+        "regla": "regla_4_duplicado"
+      }
+    ],
+    "business": [
+      {
+        "id": "Cus037",
+        "campo": "estado_cliente",
+        "valor_erroneo": "Eliminado",
+        "detalle": "estado_cliente 'Eliminado' fuera del dominio permitido",
+        "regla": "regla_2_inactividad"
+      },
+      {
+        "id": "Cus048",
+        "campo": "fecha_nacimiento",
+        "valor_erroneo": "01-01-2023",
+        "detalle": "Edad 3 es menor a 18",
+        "regla": "regla_1_edad"
+      }
+    ]
+  }
+}
