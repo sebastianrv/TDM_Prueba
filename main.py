@@ -91,7 +91,7 @@ def main():
         error_rate=args.error_rate,
         seed=args.seed
     )
-    n_errores = sum(1 for c in clientes_con_errores if "tipo_error" in c)
+    n_errores = sum(1 for c in clientes_con_errores if c.get("_inyectado"))
     log.info(f"{n_errores} errores inyectados")
 
     # 3. Validar
@@ -100,11 +100,17 @@ def main():
     log.info(f"Cumplimiento: {reporte['porcentaje_cumplimiento']}%")
     log.info(f"Errores detectados: {reporte['errores_totales']}")
 
-    # 4. Exportar dataset
-    ruta_dataset = _exportar(clientes_con_errores, args)
+# 4. Limpiar campos internos
+    clientes_limpios = [
+        {k: v for k, v in c.items() if not k.startswith("_")}
+        for c in clientes_con_errores
+    ]
+
+    # 5. Exportar dataset
+    ruta_dataset = _exportar(clientes_limpios, args)
     log.info(f"Dataset exportado: {ruta_dataset}")
 
-    # 5. Exportar reporte
+    # 6. Exportar reporte
     ruta_reporte = _exportar_reporte(reporte, args.seed)
     log.info(f"Reporte exportado: {ruta_reporte}")
 
