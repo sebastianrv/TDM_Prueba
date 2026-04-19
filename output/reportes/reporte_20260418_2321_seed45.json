@@ -1,0 +1,57 @@
+{
+  "total_registros": 500,
+  "reglas_evaluadas": 5,
+  "errores_totales": 14,
+  "errores_por_regla": {
+    "regla_1_edad": 3,
+    "regla_2_inactividad": 0,
+    "regla_3_email": 0,
+    "regla_4_duplicado": 7,
+    "regla_5_nulos": 4
+  },
+  "porcentaje_cumplimiento": 99.44,
+  "muestras_errores": {
+    "regla_1_edad": [
+      {
+        "id": "Cus218",
+        "detalle": "Edad 1 es menor a 18"
+      },
+      {
+        "id": "Cus234",
+        "detalle": "Edad 1 es menor a 18"
+      },
+      {
+        "id": "Cus300",
+        "detalle": "Campo fecha_nacimiento con formato inválido"
+      }
+    ],
+    "regla_4_duplicado": [
+      {
+        "id": "Cus164",
+        "detalle": "customer_id 'Cus164' duplicado"
+      },
+      {
+        "id": "Cus139",
+        "detalle": "customer_id 'Cus139' duplicado"
+      },
+      {
+        "id": "Cus234",
+        "detalle": "customer_id 'Cus234' duplicado"
+      }
+    ],
+    "regla_5_nulos": [
+      {
+        "id": null,
+        "detalle": "Campos nulos o vacíos: ['customer_id']"
+      },
+      {
+        "id": "Cus284",
+        "detalle": "Campos nulos o vacíos: ['estado_cliente']"
+      },
+      {
+        "id": "Cus314",
+        "detalle": "Campos nulos o vacíos: ['cedula']"
+      }
+    ]
+  }
+}
