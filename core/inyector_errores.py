@@ -20,6 +20,7 @@ def generar_errores(rng: random.Random) -> dict:
             {"cedula": "".join(rng.choices("ABCDEFGHIJKLMNOPQRSTUVWXYZ", k=5)) + str(rng.randint(10000, 99999))},
             {"cedula": str(rng.randint(100000, 999999))},
             {"cedula": str(rng.randint(10000000000, 99999999999))},
+            {"cedula": f"{rng.randint(31, 99)}{rng.randint(1000000, 9999999)}{rng.randint(0,9)}"},
             # nombre
             {"nombre": rng.randint(1000, 9999)},
             # fecha_nacimiento

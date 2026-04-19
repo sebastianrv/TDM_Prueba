@@ -56,7 +56,7 @@ def _domain_valido(campo: str, valor: str) -> bool:
     if campo == "telefono":
         return valor.startswith("09")
     if campo == "cedula":
-        return valor.isdigit() and 1 <= int(valor[:2]) <= 24
+        return valor.isdigit() and (1 <= int(valor[:2]) <= 24 or int(valor[:2]) == 30)
     return True
 
 def _error(campo: str, valor, detalle: str, tipo: str) -> dict:

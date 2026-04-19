@@ -42,7 +42,11 @@ def generar_cedula(seed: Optional[int]= None) ->str:
     rng = random.Random(seed)
 
     while True:
-        provincia = str(rng.randint(PROVINCIA_MIN, PROVINCIA_MAX)).zfill(2)
+        if rng.random() < 0.1:
+            provincia = str(PROVINCIA_EXTRANJEROS).zfill(2)
+        else:
+            provincia = str(rng.randint(PROVINCIA_MIN, PROVINCIA_MAX)).zfill(2)
+        
         tercer_digito = str(rng.randint(0, 5))
         resto = [str(rng.randint(0, 9)) for _ in range(6)]
 
