@@ -80,8 +80,8 @@ def campo_creacion(rng: random.Random, estado: str) -> datetime:
 
 def generar_cliente(numero: int, rng: random.Random) -> dict:
     # Construye cliente con datos sintéticos
-    nombre = fake.first_name()
-    apellido = fake.last_name()
+    nombre = fake.first_name().split()[0]
+    apellido = fake.last_name().split()[0]
     estados = rng.choice(ESTADOS)
     fecha_creacion = campo_creacion(rng, estados)
 
