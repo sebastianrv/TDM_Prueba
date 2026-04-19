@@ -1,12 +1,14 @@
+#Inserta errores de calidad en datos sintéticos de clientes
+
 import random
 import copy
 from datetime import datetime
 
-tipos_error = ["schema", "domain", "dup", "business"]
+TIPOS_ERROR = ["schema", "domain", "dup", "business"]
 
 
 def generar_errores(rng: random.Random) -> dict:
-
+    # Genera ejemplos de errores por categoría
     fecha_actual = datetime.now().year
 
     return {
@@ -72,7 +74,7 @@ def generar_errores(rng: random.Random) -> dict:
 
 
 def inyectar_errores( clientes: list[dict], error_rate: float, seed: int) -> list[dict]:
-
+    # Inyecta errores aleatorios segun un porcentaje de error
     if not clientes:
         raise ValueError("La lista de clientes no puede estar vacía")
     if not (0 < error_rate <= 1):
@@ -89,7 +91,7 @@ def inyectar_errores( clientes: list[dict], error_rate: float, seed: int) -> lis
     ids_disponibles= [c["customer_id"] for c in resultado]
 
     for idx in indices:
-        tipo = rng.choice(tipos_error)
+        tipo = rng.choice(TIPOS_ERROR)
         cliente = resultado[idx]
 
         if tipo == "dup":

@@ -1,35 +1,39 @@
+#Validación respecto a las reglas establecidas para los datos sintéticos
+
 import re
 from datetime import datetime, timedelta
 
-edad_min=18
-mes_inactivo=6
-formato_nacimiento="%d-%m-%Y"
-formato_fecha="%d/%m/%Y %H:%M:%S"
+EDAD_MIN=18
+MES_INACTIVO=6
+FORMATO_NACIMIENTO="%d-%m-%Y"
+FORMATO_FECHA="%d/%m/%Y %H:%M:%S"
 
 def validar_regla1 (cliente: dict) ->str | None:
+    # Valida que el cliente sea mayor de edad
     try:
-        fecha = datetime.strptime(cliente["fecha_nacimiento"], formato_nacimiento)
+        fecha = datetime.strptime(cliente["fecha_nacimiento"], FORMATO_NACIMIENTO)
         edad = (datetime.now() - fecha).days // 365
-        if edad < edad_min:
-            return f"Edad {edad} es menor a {edad_min}"
+        if edad < EDAD_MIN:
+            return f"Edad {edad} es menor a {EDAD_MIN}"
     except Exception:
         return "Campo fecha_nacimiento con formato inválido"
     return None
 
 def validar_regla2 (cliente: dict) -> str | None:
+    # Valida inactivos con antigüedad mínima requerida
     if cliente["estado_cliente"] != "Inactivo":
         return None
     try:
-        fecha = datetime.strptime(cliente["fecha_creacion"], formato_fecha)
-        limite = datetime.now() - timedelta(days=mes_inactivo * 30)
+        fecha = datetime.strptime(cliente["fecha_creacion"], FORMATO_FECHA)
+        limite = datetime.now() - timedelta(days=MES_INACTIVO * 30)
         if fecha > limite:
-            return f"Cliente Inactivo con fecha_creacion menor a {mes_inactivo} meses"
+            return f"Cliente Inactivo con fecha_creacion menor a {MES_INACTIVO} meses"
     except Exception:
         return "Campo fecha_creacion con formato inválido"
     return None
 
 def validar_regla3 (cliente: dict) -> str | None:
-    """Regla 3: Email con formato válido."""
+    # Valida formato correcto del email
     email = cliente.get("email", "")
     if email is None:
         return "Email es nulo"
@@ -38,6 +42,7 @@ def validar_regla3 (cliente: dict) -> str | None:
     return None
 
 def validar_regla4 (cliente: dict, ids_vistos: set) -> str | None:
+     # Valida que customer_id no esté duplicado
     cid = cliente.get("customer_id")
     if cid in ids_vistos:
         return f"customer_id '{cid}' duplicado"
@@ -45,13 +50,14 @@ def validar_regla4 (cliente: dict, ids_vistos: set) -> str | None:
     return None
 
 def validar_regla5 (cliente: dict) -> str | None:
-    """Regla 5: No valores nulos."""
+    # Valida campos nulos o vacíos
     nulos = [campo for campo, valor in cliente.items() if valor is None or valor == ""]
     if nulos:
         return f"Campos nulos o vacíos: {nulos}"
     return None
 
 def validar_clientes (clientes: list[dict]) -> dict:
+    # Ejecuta reglas y genera reporte
     errores = {
         "regla_1_edad": [],
         "regla_2_inactividad": [],
