@@ -52,22 +52,12 @@ tdm-data-sintetica/
 
 ---
 
-## Algoritmo cédula ecuatoriana
-
-Implementa el algoritmo Módulo 10 estándar:
-- Dígitos 1-2: código de provincia (01-24)
-- Dígito 3: menor a 6 (0-5)
-- Dígito 10: verificador calculado con coeficientes alternados 2,1
-- Fuente: práctica estándar verificable en registrocivil.gob.ec
-
----
-
 ## Instalación
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <url-del-repo>
-cd tdm-data-sintetica
+git clone https://github.com/sebastianrv/TDM_Prueba.git
+cd TDM_Prueba
 ```
 
 ### 2. Instalar dependencias
@@ -89,7 +79,6 @@ python -c "import faker, pandas, yaml; print('Dependencias OK')"
 python main.py
 
 # Con parámetros personalizados
-python main.py --n 300 --seed 45
 python main.py --n 500 --seed 45 --error_rate 0.05 --formato csv
 ```
 
@@ -110,8 +99,7 @@ python main.py --n 500 --seed 45 --error_rate 0.05 --formato csv
 python main.py --n 500 --seed 45 --error_rate 0.05 --formato csv
 ```
 
-Genera siempre los mismos 500 clientes con los mismos errores inyectados.
+Genera los siguientes archivos:
 
-Archivos generados:
 - `archivos/clientes_YYYYMMDD_HHMM_seed00.csv`
 - `reportes/reporte_YYYYMMDD_HHMM_seed00.json`
