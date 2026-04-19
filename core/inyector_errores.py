@@ -103,7 +103,7 @@ def inyectar_errores( clientes: list[dict], error_rate: float, seed: int) -> lis
         else:
             mutacion = rng.choice(errores[tipo])
             cliente.update(mutacion)
+            
+        cliente["_inyectado"] = True
 
-        cliente["tipo_error"] = tipo
-
-    return resultado
+    return resultado    

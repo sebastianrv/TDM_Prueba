@@ -23,6 +23,5 @@ reporte = validar_clientes(clientes_con_errores)
 print(json.dumps(reporte, indent=2, ensure_ascii=False))
 
 # Verificar cuántos errores se inyectaron
-errores = [c for c in clientes_con_errores if "tipo_error" in c]
+errores = [c for c in clientes_con_errores if "_inyectado" in c]
 print(f"\nErrores inyectados: {len(errores)}")
-print(f"Tipos: {set(c['tipo_error'] for c in errores)}")
