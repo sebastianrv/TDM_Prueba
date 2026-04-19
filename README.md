@@ -32,7 +32,7 @@ tdm-data-sintetica/
 
 El diagrama de la arquitectura de solución aplicado al presente ejercicio.
 
-![Arquitectura de solución](arquitectura/Arquitectura_solución.png)
+![Arquitectura de solución](arquitectura/arquitectura_solución.png)
 ---
 
 ## Reglas validadas
